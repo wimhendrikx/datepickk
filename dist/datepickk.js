@@ -73,8 +73,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84,7 +85,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-__webpack_require__(1);
+__webpack_require__(6);
 
 function Datepickk(args) {
 	Datepickk.numInstances = (Datepickk.numInstances || 0) + 1;
@@ -599,7 +600,13 @@ function Datepickk(args) {
 			if (maxSelections && selectedDates.length > maxSelections - 1) {
 				var length = selectedDates.length;
 				for (length; length > maxSelections - 1; length--) {
-					unselectDate(selectedDates[0]);
+					console.log('remove', selectedDates);
+					if (range) {
+						// Remove end date
+						unselectDate(selectedDates[selectedDates.length - 1]);
+					} else {
+						unselectDate(selectedDates[0]);
+					}
 				}
 			}
 
@@ -617,7 +624,8 @@ function Datepickk(args) {
 			}
 		} else {
 			if (range && selectedDates.length == 1 && selectedDates[0].getTime() == date.getTime()) {
-				selectDate(date);
+				//selectDate(date);
+				unselectDate(selectedDates[0]);
 				input.classList.add('single');
 			} else {
 				selectedDates = selectedDates.filter(function (x) {
@@ -1299,11 +1307,13 @@ var getBrowserVersion = function getBrowserVersion() {
 exports.default = Datepickk;
 
 /***/ }),
-/* 1 */
+
+/***/ 6:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-/******/ ])["default"];
+
+/******/ })["default"];
 });

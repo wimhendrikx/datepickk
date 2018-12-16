@@ -515,7 +515,13 @@ function Datepickk(args){
 			if(maxSelections && selectedDates.length > maxSelections-1){
 				var length = selectedDates.length;
 				for(length; length > maxSelections-1; length --){
-					unselectDate(selectedDates[0]);
+                    console.log('remove', selectedDates);
+					if (range) {
+						// Remove end date
+                        unselectDate(selectedDates[selectedDates.length-1]);
+					} else {
+                        unselectDate(selectedDates[0]);
+					}
 				}
 
 			}
@@ -534,7 +540,8 @@ function Datepickk(args){
 			}
 		}else{
 			if(range && selectedDates.length == 1 && selectedDates[0].getTime() == date.getTime()){
-				selectDate(date);
+				//selectDate(date);
+                unselectDate(selectedDates[0]);
 				input.classList.add('single');
 			}else{
 				selectedDates = selectedDates.filter(function(x){return x.getTime() != date.getTime()})
