@@ -642,7 +642,7 @@ function Datepickk(args){
 
 		var startX = 0;
 		var distance = 0;
-		if (that.inline) {
+		if (!that.inline) {
             that.el.calendar.addEventListener('touchstart', function (e) {
                 startX = e.changedTouches[0].clientX || e.originalEvent.changedTouches[0].clientX;
                 //e.preventDefault();
